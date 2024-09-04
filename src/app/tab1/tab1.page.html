@@ -1,0 +1,33 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title> Tasks </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Todos</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-item>
+    <ion-title>Add task:</ion-title>
+    <ion-input [(ngModel)]="input"></ion-input>
+    <ion-button size="default" (click)="onAddTodo()">Add</ion-button>
+  </ion-item>
+
+  <ion-list>
+    <ion-item *ngFor="let todo of todos; let i = index">
+      {{ todo }}
+      <ion-button slot="end" color="warning" (click)="onTaskForgotten(i)">
+        Forgotten
+      </ion-button>
+      <ion-button slot="end" color="success" (click)="onTaskDone(i)">
+        Done
+      </ion-button>
+      <ion-button slot="end" color="danger" (click)="onDeleteTodo(i)">
+        Delete
+      </ion-button>
+    </ion-item>
+  </ion-list>
+</ion-content>
